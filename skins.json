@@ -8,20 +8,20 @@
     "quality": "legend"
   },
   {
-    "id": "bowieRevenge",
-    "name": "Fire Storm",
-    "weapon": "AK-47",
-    "image": "skins/bowieRevenge.png",
-    "price": 6000,
-    "quality": "pro"
+    "id": "DaggersDualityRed",
+    "name": "Duality Red",
+    "weapon": "Daggers",
+    "image": "skins/DaggersDualityRed.png",
+    "price": 20000,
+    "quality": "myth"
   },
   {
-    "id": "m4_blue",
+    "id": "DaggersDualityBlue",
     "name": "Blue Steel",
     "weapon": "M4A1",
-    "image": "skins/m4_blue.png",
-    "price": 1500,
-    "quality": "pro"
+    "image": "skins/DaggersDualityBlue.png",
+    "price": 23400,
+    "quality": "myth"
   },
   {
     "id": "glock_basic",
