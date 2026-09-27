@@ -67,35 +67,20 @@
             aspect-ratio: 1 / 1.15;
             display: flex;
             flex-direction: column;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 
-                0 0 0 1px rgba(0, 0, 0, 0.6),
-                0 4px 12px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .skin-card:hover {
             transform: translateY(-4px);
-            box-shadow: 
-                0 0 0 1px rgba(0, 0, 0, 0.6),
-                0 8px 24px rgba(0, 0, 0, 0.7),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
         }
 
         .skin-card.selected {
-            border-color: #FFD700;
-            box-shadow: 
-                0 0 24px rgba(255, 215, 0, 0.9),
-                0 0 0 1px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 24px rgba(255, 215, 0, 0.9), 0 4px 12px rgba(0,0,0,0.5);
         }
 
         .skin-card.target-selected {
-            border-color: #6a8aff;
-            box-shadow: 
-                0 0 24px rgba(106, 138, 255, 0.9),
-                0 0 0 1px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 24px rgba(106, 138, 255, 0.9), 0 4px 12px rgba(0,0,0,0.5);
         }
 
         .skin-card .top-part {
@@ -106,8 +91,6 @@
             padding: 10px;
             position: relative;
             min-height: 0;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
         }
 
         .skin-card .top-part img {
@@ -120,17 +103,15 @@
 
         .skin-card .bottom-part {
             background: #2a2f3a;
-            padding: 8px 12px;
-            min-height: 50px;
+            padding: 10px 14px;
+            min-height: 55px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
         }
 
         .skin-card .name {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             color: #fff;
             text-align: left;
@@ -148,40 +129,45 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            font-weight: 400;
         }
 
-        /* ===== ГРАДИЕНТЫ ПО КАЧЕСТВУ ===== */
+        /* ===== ГРАДИЕНТЫ И РАМКИ ПО КАЧЕСТВУ ===== */
+
+        /* Базовое */
         .quality-base .top-part {
             background: linear-gradient(180deg, 
-                #6BB8FF 0%, 
-                #4A90E2 25%, 
-                #3A6A9F 50%, 
-                #354560 75%, 
-                #3A3F45 100%);
+                #5AB0FF 0%, #4A90E2 25%, #3A6A9F 50%, #354560 75%, #3A3F45 100%);
         }
+        .quality-base {
+            border: 2px solid #5AB0FF;
+        }
+
+        /* Профессиональное */
         .quality-pro .top-part {
             background: linear-gradient(180deg, 
-                #FF6B6B 0%, 
-                #D32F2F 25%, 
-                #8A3030 50%, 
-                #552525 75%, 
-                #3A3F45 100%);
+                #FF6B6B 0%, #D32F2F 25%, #8A3030 50%, #552525 75%, #3A3F45 100%);
         }
+        .quality-pro {
+            border: 2px solid #FF4444;
+        }
+
+        /* Легендарное */
         .quality-legend .top-part {
             background: linear-gradient(180deg, 
-                #D896FF 0%, 
-                #A855F7 25%, 
-                #7A3FB0 50%, 
-                #4A2A60 75%, 
-                #3A3F45 100%);
+                #D896FF 0%, #A855F7 25%, #7A3FB0 50%, #4A2A60 75%, #3A3F45 100%);
         }
+        .quality-legend {
+            border: 2px solid #C060FF;
+        }
+
+        /* Мистическое */
         .quality-myth .top-part {
             background: linear-gradient(180deg, 
-                #F5D91A 0%, 
-                #D4B91A 20%, 
-                #A89520 45%, 
-                #6B6535 70%, 
-                #3A3F45 100%);
+                #F5D91A 0%, #D4B91A 20%, #A89520 45%, #6B6535 70%, #3A3F45 100%);
+        }
+        .quality-myth {
+            border: 2px solid #FFD700;
         }
 
         /* ===== АПГРЕЙД ===== */
@@ -445,13 +431,13 @@
     }
 
     function loadState() {
-        const saved = localStorage.getItem('osnw_upgrader_v7');
+        const saved = localStorage.getItem('osnw_upgrader_v8');
         if (saved) {
             try { state = JSON.parse(saved); } catch (e) { resetState(); }
         }
     }
     function saveState() {
-        localStorage.setItem('osnw_upgrader_v7', JSON.stringify(state));
+        localStorage.setItem('osnw_upgrader_v8', JSON.stringify(state));
     }
     function resetState() {
         state = { balance: START_BALANCE, inventory: [] };
