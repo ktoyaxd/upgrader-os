@@ -60,24 +60,42 @@
         /* ===== КАРТОЧКА СКИНА ===== */
         .skin-card {
             position: relative;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.3s ease;
             aspect-ratio: 1 / 1.15;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 0 0 1px rgba(0, 0, 0, 0.6),
+                0 4px 12px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
+
         .skin-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            box-shadow: 
+                0 0 0 1px rgba(0, 0, 0, 0.6),
+                0 8px 24px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
+
         .skin-card.selected {
-            box-shadow: 0 0 24px rgba(255, 215, 0, 0.9);
+            border-color: #FFD700;
+            box-shadow: 
+                0 0 24px rgba(255, 215, 0, 0.9),
+                0 0 0 1px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
+
         .skin-card.target-selected {
-            box-shadow: 0 0 24px rgba(106, 138, 255, 0.9);
+            border-color: #6a8aff;
+            box-shadow: 
+                0 0 24px rgba(106, 138, 255, 0.9),
+                0 0 0 1px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .skin-card .top-part {
@@ -88,13 +106,16 @@
             padding: 10px;
             position: relative;
             min-height: 0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
+
         .skin-card .top-part img {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
             image-rendering: pixelated;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
         .skin-card .bottom-part {
@@ -104,7 +125,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
         }
+
         .skin-card .name {
             font-size: 14px;
             font-weight: 700;
@@ -115,6 +139,7 @@
             white-space: nowrap;
             line-height: 1.2;
         }
+
         .skin-card .weapon {
             font-size: 11px;
             color: #8a95a5;
@@ -125,18 +150,38 @@
             white-space: nowrap;
         }
 
-        /* ===== ГРАДИЕНТЫ ПО КАЧЕСТВУ (плавно в серый) ===== */
+        /* ===== ГРАДИЕНТЫ ПО КАЧЕСТВУ ===== */
         .quality-base .top-part {
-            background: linear-gradient(180deg, #5AB0FF 0%, #4A90E2 40%, #3A5068 75%, #3A3F45 100%);
+            background: linear-gradient(180deg, 
+                #6BB8FF 0%, 
+                #4A90E2 25%, 
+                #3A6A9F 50%, 
+                #354560 75%, 
+                #3A3F45 100%);
         }
         .quality-pro .top-part {
-            background: linear-gradient(180deg, #FF4444 0%, #D32F2F 40%, #6B3535 75%, #3A3F45 100%);
+            background: linear-gradient(180deg, 
+                #FF6B6B 0%, 
+                #D32F2F 25%, 
+                #8A3030 50%, 
+                #552525 75%, 
+                #3A3F45 100%);
         }
         .quality-legend .top-part {
-            background: linear-gradient(180deg, #C060FF 0%, #A855F7 40%, #5A3F75 75%, #3A3F45 100%);
+            background: linear-gradient(180deg, 
+                #D896FF 0%, 
+                #A855F7 25%, 
+                #7A3FB0 50%, 
+                #4A2A60 75%, 
+                #3A3F45 100%);
         }
         .quality-myth .top-part {
-            background: linear-gradient(180deg, #E8C81A 0%, #C4B01F 40%, #6B6535 75%, #3A3F45 100%);
+            background: linear-gradient(180deg, 
+                #F5D91A 0%, 
+                #D4B91A 20%, 
+                #A89520 45%, 
+                #6B6535 70%, 
+                #3A3F45 100%);
         }
 
         /* ===== АПГРЕЙД ===== */
@@ -314,7 +359,6 @@
         <div class="tab" data-tab="shop">Магазин</div>
     </div>
 
-    <!-- АПГРЕЙД -->
     <div class="section active" id="section-upgrade">
         <div class="upgrade-layout">
 
@@ -362,7 +406,6 @@
         </div>
     </div>
 
-    <!-- МАГАЗИН -->
     <div class="section" id="section-shop">
         <div class="shop-grid" id="shopGrid"></div>
     </div>
@@ -402,13 +445,13 @@
     }
 
     function loadState() {
-        const saved = localStorage.getItem('osnw_upgrader_v6');
+        const saved = localStorage.getItem('osnw_upgrader_v7');
         if (saved) {
             try { state = JSON.parse(saved); } catch (e) { resetState(); }
         }
     }
     function saveState() {
-        localStorage.setItem('osnw_upgrader_v6', JSON.stringify(state));
+        localStorage.setItem('osnw_upgrader_v7', JSON.stringify(state));
     }
     function resetState() {
         state = { balance: START_BALANCE, inventory: [] };
