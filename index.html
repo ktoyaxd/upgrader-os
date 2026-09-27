@@ -106,8 +106,16 @@
             padding: 8px 12px;
             min-height: 52px;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skin-card .left-info {
+            display: flex;
             flex-direction: column;
-            justify-content: center;
+            min-width: 0;
+            flex: 1;
         }
 
         .skin-card .name {
@@ -133,11 +141,11 @@
         }
 
         .skin-card .price {
-            font-size: 12px;
+            font-size: 13px;
             color: #FFD700;
-            text-align: left;
-            margin-top: 3px;
             font-weight: 700;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         /* ===== КАЧЕСТВА ===== */
@@ -265,6 +273,10 @@
             background: #FFD700;
             border-color: #FFD700;
             color: #202126;
+        }
+        .mult-btn:disabled {
+            opacity: 0.4;
+            cursor: default;
         }
 
         .stats {
@@ -407,7 +419,7 @@
                         <button class="mult-btn" data-mult="5">x5</button>
                         <button class="mult-btn" data-mult="10">x10</button>
                     </div>
-                    <div class="mult-label">Проценты</div>
+                    <div class="mult-label">Шанс на победу</div>
                     <div class="mult-buttons">
                         <button class="mult-btn" data-chance="30">30%</button>
                         <button class="mult-btn" data-chance="50">50%</button>
@@ -476,8 +488,10 @@
                 <img src="${skin.image}" alt="${skin.name}" onerror="this.style.display='none';">
             </div>
             <div class="bottom-part">
-                <div class="name">${skin.name}</div>
-                <div class="weapon">${skin.weapon || ''}</div>
+                <div class="left-info">
+                    <div class="name">${skin.name}</div>
+                    <div class="weapon">${skin.weapon || ''}</div>
+                </div>
                 <div class="price">${skin.price} G</div>
             </div>
         `;
