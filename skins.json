@@ -1,0 +1,10 @@
+[
+  { "id": "base_1", "name": "Базовый скин #1", "image": "skins/base_1.png", "price": 100, "quality": "base" },
+  { "id": "base_2", "name": "Базовый скин #2", "image": "skins/base_2.png", "price": 300, "quality": "base" },
+  { "id": "pro_1", "name": "Профессиональный скин #1", "image": "skins/pro_1.png", "price": 700, "quality": "pro" },
+  { "id": "pro_2", "name": "Профессиональный скин #2", "image": "skins/pro_2.png", "price": 1500, "quality": "pro" },
+  { "id": "legend_1", "name": "Легендарный скин #1", "image": "skins/legend_1.png", "price": 3000, "quality": "legend" },
+  { "id": "legend_2", "name": "Легендарный скин #2", "image": "skins/legend_2.png", "price": 6000, "quality": "legend" },
+  { "id": "myth_1", "name": "Мистический скин #1", "image": "skins/myth_1.png", "price": 15000, "quality": "myth" },
+  { "id": "myth_2", "name": "Мистический скин #2", "image": "skins/myth_2.png", "price": 30000, "quality": "myth" }
+]
