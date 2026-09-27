@@ -12,27 +12,30 @@
             font-family: 'Segoe UI', Arial, sans-serif;
             min-height: 100vh;
             padding: 20px;
-            display: flex;
-            justify-content: center;
         }
         .container {
-            width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         h1 {
-            font-size: 26px;
-            text-align: center;
-            margin-bottom: 20px;
+            font-size: 24px;
             letter-spacing: 2px;
         }
         .balance {
             background: #3A3F45;
             border: 1px solid #363940;
-            padding: 16px;
-            text-align: center;
-            font-size: 22px;
+            padding: 12px 20px;
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 20px;
         }
         .balance .gold { color: #FFD700; }
 
@@ -42,105 +45,147 @@
             margin-bottom: 20px;
         }
         .tab {
-            flex: 1;
-            padding: 12px;
+            padding: 10px 20px;
             background: #3A3F45;
             border: 1px solid #363940;
             color: #fff;
             cursor: pointer;
-            text-align: center;
-            font-size: 16px;
+            font-size: 15px;
             transition: 0.3s;
         }
         .tab:hover { background: #363940; }
         .tab.active { background: #42474B; border-color: #FFFFFF; }
 
-        .section {
-            display: none;
-        }
-        .section.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
+        .section { display: none; }
+        .section.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .shop-grid {
+        /* ===== UPGRADE LAYOUT ===== */
+        .upgrade-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr 320px 1fr;
+            gap: 20px;
+            align-items: start;
         }
 
-        .skin-card {
+        .panel {
             background: #3A3F45;
             border: 1px solid #363940;
-            padding: 12px;
-            cursor: pointer;
-            transition: 0.3s;
-            text-align: center;
-            position: relative;
+            padding: 16px;
         }
-        .skin-card:hover {
-            background: #363940;
-            border-color: #FFFFFF;
-            transform: translateY(-3px);
+        .panel-title {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .skin-card.selected {
-            border-color: #FFFFFF;
-            background: #42474B;
+
+        .skins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 10px;
+            max-height: 400px;
+            overflow-y: auto;
         }
-        .skin-card .img {
-            width: 100%;
-            height: 100px;
+        .skin-mini {
             background: #202126;
             border: 1px solid #363940;
-            margin-bottom: 10px;
+            padding: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.2s;
+            position: relative;
+        }
+        .skin-mini:hover {
+            border-color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+        .skin-mini.selected {
+            border-color: #FFD700;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+        .skin-mini.target {
+            border-color: #6a8aff;
+            box-shadow: 0 0 8px rgba(106, 138, 255, 0.4);
+        }
+        .skin-mini .img {
+            width: 100%;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            opacity: 0.5;
-            overflow: hidden;
+            margin-bottom: 6px;
+            font-size: 10px;
+            opacity: 0.7;
         }
-        .skin-card .img img {
-            width: 100%;
-            height: 100%;
+        .skin-mini .img img {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
         }
-        .skin-card .name {
-            font-size: 14px;
+        .skin-mini .name {
+            font-size: 11px;
             font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .skin-mini .price {
+            font-size: 11px;
+            color: #FFD700;
+            margin-top: 2px;
+        }
+
+        /* ===== ROULETTE ===== */
+        .roulette-box {
+            background: #3A3F45;
+            border: 1px solid #363940;
+            padding: 16px;
+            text-align: center;
+        }
+        .roulette-circle {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 16px;
+        }
+        .roulette-svg {
+            width: 100%;
+            height: 100%;
+            transition: transform 5s cubic-bezier(0.15, 0.9, 0.15, 1);
+        }
+        .roulette-arrow {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 24px solid #FFD700;
+            filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+            z-index: 5;
+        }
+        .upgrade-info {
+            background: #202126;
+            border: 1px solid #363940;
+            padding: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .upgrade-info .row {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 6px;
         }
-        .skin-card .price {
-            font-size: 13px;
-            color: #FFD700;
-        }
-        .skin-card .quality {
-            font-size: 11px;
-            margin-top: 4px;
-            text-transform: uppercase;
-        }
-        .quality-base { color: #5AB0FF; }
-        .quality-pro { color: #FF4444; }
-        .quality-legend { color: #C060FF; }
-        .quality-myth { color: #FFD700; }
-
-        .inv-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 12px;
-        }
-
-        .empty {
-            text-align: center;
-            opacity: 0.5;
-            padding: 30px;
-            font-size: 14px;
-        }
+        .upgrade-info .row:last-child { margin-bottom: 0; }
+        .upgrade-info .gold { color: #FFD700; }
+        .upgrade-info .chance { color: #6a8aff; font-weight: 700; }
 
         .btn {
             display: block;
@@ -149,86 +194,85 @@
             background: #42474B;
             border: 1px solid #363940;
             color: #fff;
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .btn:hover { background: #363940; border-color: #FFFFFF; }
+        .btn:hover:not(:disabled) { background: #363940; border-color: #FFFFFF; }
         .btn:disabled { opacity: 0.4; cursor: default; }
         .btn-danger {
             background: #2a1a1a;
             border-color: #5a2a2a;
             color: #ff6b6b;
         }
-        .btn-danger:hover { background: #3a1a1a; border-color: #8a3a3a; }
+        .btn-danger:hover:not(:disabled) { background: #3a1a1a; border-color: #8a3a3a; }
 
-        .inventory-label {
-            font-size: 16px;
-            margin-bottom: 12px;
-            opacity: 0.7;
+        /* ===== SHOP ===== */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 14px;
         }
-
-        /* Рулетка */
-        .roulette-wrapper {
-            position: relative;
-            background: #202126;
+        .shop-card {
+            background: #3A3F45;
             border: 1px solid #363940;
-            height: 120px;
-            overflow: hidden;
-            margin-bottom: 20px;
+            padding: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.3s;
         }
-        .roulette-track {
-            display: flex;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            transition: transform 5s cubic-bezier(0.15, 0.9, 0.15, 1);
+        .shop-card:hover {
+            background: #363940;
+            border-color: #FFFFFF;
+            transform: translateY(-3px);
         }
-        .roulette-item {
-            width: 120px;
-            height: 100%;
-            border-right: 1px solid #363940;
+        .shop-card .img {
+            width: 100%;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            font-size: 12px;
-            padding: 5px;
-            text-align: center;
+            background: #202126;
+            border: 1px solid #363940;
+            margin-bottom: 8px;
+            font-size: 11px;
+            opacity: 0.7;
         }
-        .roulette-item img {
-            max-width: 90%;
-            max-height: 90%;
+        .shop-card .img img {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
         }
-        .roulette-pointer {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background: #FFD700;
-            z-index: 10;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px #FFD700;
+        .shop-card .name {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .shop-card .price {
+            font-size: 13px;
+            color: #FFD700;
+        }
+        .shop-card .quality {
+            font-size: 10px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+        .quality-base { color: #5AB0FF; }
+        .quality-pro { color: #FF4444; }
+        .quality-legend { color: #C060FF; }
+        .quality-myth { color: #FFD700; }
+
+        .empty {
+            text-align: center;
+            opacity: 0.5;
+            padding: 20px;
+            font-size: 13px;
         }
 
-        .upgrade-info {
-            background: #3A3F45;
-            border: 1px solid #363940;
-            padding: 16px;
-            margin-bottom: 16px;
-            font-size: 14px;
-        }
-        .upgrade-info .row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        .upgrade-info .row:last-child { margin-bottom: 0; }
-
+        /* ===== MODAL ===== */
         .modal {
             position: fixed;
             top: 0;
@@ -271,67 +315,92 @@
             gap: 10px;
             margin-top: 20px;
         }
-        .modal-buttons .btn {
-            margin-top: 0;
-        }
+        .modal-buttons .btn { margin-top: 0; }
 
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 900px) {
+            .upgrade-layout {
+                grid-template-columns: 1fr;
+            }
+            .roulette-box { order: 2; }
+            .panel { order: 1; }
+        }
         @media (max-width: 600px) {
-            .shop-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            }
-            .inv-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
-            h1 { font-size: 20px; }
+            h1 { font-size: 18px; }
+            .roulette-circle { width: 220px; height: 220px; }
+            .skins-grid { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); }
+            .shop-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🎰 Апгрейдер скинов OSNW</h1>
-
-    <div class="balance">Баланс: <span class="gold" id="balanceDisplay">100</span> G</div>
+    <div class="topbar">
+        <h1>🎰 Апгрейдер OSNW</h1>
+        <div class="balance">Баланс: <span class="gold" id="balanceDisplay">100</span> G</div>
+    </div>
 
     <div class="tabs">
-        <div class="tab active" data-tab="shop">Магазин</div>
-        <div class="tab" data-tab="inventory">Инвентарь</div>
+        <div class="tab active" data-tab="upgrade">Апгрейд</div>
+        <div class="tab" data-tab="shop">Магазин</div>
+    </div>
+
+    <!-- АПГРЕЙД -->
+    <div class="section active" id="section-upgrade">
+        <div class="upgrade-layout">
+
+            <!-- ИНВЕНТАРЬ -->
+            <div class="panel">
+                <div class="panel-title">Твои скины</div>
+                <div class="skins-grid" id="invGrid"></div>
+            </div>
+
+            <!-- РУЛЕТКА -->
+            <div class="roulette-box">
+                <div class="roulette-circle">
+                    <div class="roulette-arrow"></div>
+                    <svg class="roulette-svg" id="rouletteSvg" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="95" fill="#202126" stroke="#363940" stroke-width="2"/>
+                    </svg>
+                </div>
+
+                <div class="upgrade-info">
+                    <div class="row">
+                        <span>Вложено:</span>
+                        <span class="gold" id="investedSum">0</span> G
+                    </div>
+                    <div class="row">
+                        <span>Цель:</span>
+                        <span class="gold" id="targetPrice">—</span> G
+                    </div>
+                    <div class="row">
+                        <span>Шанс:</span>
+                        <span class="chance" id="chanceDisplay">—</span>
+                    </div>
+                </div>
+
+                <button class="btn" id="upgradeBtn" disabled>🎲 Апгрейд</button>
+            </div>
+
+            <!-- ЦЕЛЬ -->
+            <div class="panel">
+                <div class="panel-title">Цель</div>
+                <div class="skins-grid" id="targetGrid"></div>
+            </div>
+
+        </div>
     </div>
 
     <!-- МАГАЗИН -->
-    <div class="section active" id="section-shop">
+    <div class="section" id="section-shop">
         <div class="shop-grid" id="shopGrid"></div>
-        <button class="btn" id="rollBtn">🎲 Крутить рулетку</button>
-    </div>
-
-    <!-- ИНВЕНТАРЬ -->
-    <div class="section" id="section-inventory">
-        <div class="inventory-label">Твои скины:</div>
-        <div class="inv-grid" id="invGrid"></div>
-
-        <div class="upgrade-info">
-            <div class="row">
-                <span>Выбрано скинов:</span>
-                <span id="selectedCount">0</span>
-            </div>
-            <div class="row">
-                <span>Общая сумма:</span>
-                <span class="gold" id="selectedSum">0</span> G
-            </div>
-        </div>
-
-        <button class="btn" id="upgradeBtn" disabled>⬆️ Апгрейд</button>
-        <button class="btn btn-danger" id="sellBtn" disabled>💰 Продать выбранные</button>
     </div>
 </div>
 
 <!-- МОДАЛЬНОЕ ОКНО -->
 <div class="modal" id="modal">
-    <div class="modal-content">
-        <h2 id="modalTitle">Результат</h2>
-        <div class="result-skin" id="modalResult"></div>
-        <div class="modal-buttons" id="modalButtons"></div>
-    </div>
+    <div class="modal-content" id="modalContent"></div>
 </div>
 
 <script>
@@ -339,19 +408,7 @@
     // КОНФИГУРАЦИЯ
     // ============================================
     const START_BALANCE = 100;
-
-    // Шансы зависят от суммы вложенного
-    function getChances(sum) {
-        if (sum < 500) {
-            return { base: 60, pro: 30, legend: 8, myth: 2 };
-        } else if (sum < 2000) {
-            return { base: 30, pro: 40, legend: 25, myth: 5 };
-        } else if (sum < 10000) {
-            return { base: 10, pro: 30, legend: 45, myth: 15 };
-        } else {
-            return { base: 0, pro: 15, legend: 50, myth: 35 };
-        }
-    }
+    const UPGRADE_DURATION = 5000;
 
     const QUALITY_NAMES = {
         base: 'Базовое',
@@ -360,48 +417,42 @@
         myth: 'Мистическое'
     };
 
+    const QUALITY_COLORS = {
+        base: '#5AB0FF',
+        pro: '#FF4444',
+        legend: '#C060FF',
+        myth: '#FFD700'
+    };
+
     // ============================================
     // СОСТОЯНИЕ
     // ============================================
-    let state = {
-        balance: START_BALANCE,
-        inventory: []
-    };
-
+    let state = { balance: START_BALANCE, inventory: [] };
     let SKINS = [];
-    let selectedSkins = new Set();
+    let selectedSkins = new Set(); // индексы в инвентаре
+    let targetSkin = null;
 
     // ============================================
     // ЗАГРУЗКА
     // ============================================
     function loadState() {
-        const saved = localStorage.getItem('osnw_upgrader');
+        const saved = localStorage.getItem('osnw_upgrader_v2');
         if (saved) {
-            try {
-                state = JSON.parse(saved);
-            } catch (e) {
-                resetState();
-            }
+            try { state = JSON.parse(saved); } catch (e) { resetState(); }
         }
     }
-
     function saveState() {
-        localStorage.setItem('osnw_upgrader', JSON.stringify(state));
+        localStorage.setItem('osnw_upgrader_v2', JSON.stringify(state));
     }
-
     function resetState() {
         state = { balance: START_BALANCE, inventory: [] };
         saveState();
     }
-
     async function loadSkins() {
         try {
             const res = await fetch('skins.json');
             SKINS = await res.json();
-        } catch (e) {
-            console.error('Ошибка загрузки skins.json:', e);
-            SKINS = [];
-        }
+        } catch (e) { SKINS = []; }
     }
 
     // ============================================
@@ -409,6 +460,63 @@
     // ============================================
     function updateBalance() {
         document.getElementById('balanceDisplay').textContent = state.balance;
+    }
+
+    function renderInventory() {
+        const grid = document.getElementById('invGrid');
+        grid.innerHTML = '';
+
+        if (state.inventory.length === 0) {
+            grid.innerHTML = '<div class="empty">Инвентарь пуст. Купи скин в магазине!</div>';
+            return;
+        }
+
+        state.inventory.forEach((skin, index) => {
+            const el = document.createElement('div');
+            el.className = 'skin-mini' + (selectedSkins.has(index) ? ' selected' : '');
+            el.innerHTML = `
+                <div class="img">
+                    <img src="${skin.image}" onerror="this.style.display='none'; this.parentElement.textContent='${skin.name}';">
+                </div>
+                <div class="name">${skin.name}</div>
+                <div class="price">${skin.price} G</div>
+            `;
+            el.addEventListener('click', () => {
+                if (selectedSkins.has(index)) selectedSkins.delete(index);
+                else selectedSkins.add(index);
+                renderInventory();
+                updateUpgradeInfo();
+            });
+            grid.appendChild(el);
+        });
+    }
+
+    function renderTargets() {
+        const grid = document.getElementById('targetGrid');
+        grid.innerHTML = '';
+
+        if (SKINS.length === 0) {
+            grid.innerHTML = '<div class="empty">Скины не загружены</div>';
+            return;
+        }
+
+        SKINS.forEach(skin => {
+            const el = document.createElement('div');
+            el.className = 'skin-mini' + (targetSkin && targetSkin.id === skin.id ? ' target' : '');
+            el.innerHTML = `
+                <div class="img">
+                    <img src="${skin.image}" onerror="this.style.display='none'; this.parentElement.textContent='${skin.name}';">
+                </div>
+                <div class="name">${skin.name}</div>
+                <div class="price">${skin.price} G</div>
+            `;
+            el.addEventListener('click', () => {
+                targetSkin = skin;
+                renderTargets();
+                updateUpgradeInfo();
+            });
+            grid.appendChild(el);
+        });
     }
 
     function renderShop() {
@@ -420,76 +528,46 @@
             return;
         }
 
-        // В магазине показываем все скины (для теста — покупаешь любой)
         SKINS.forEach(skin => {
-            const card = document.createElement('div');
-            card.className = 'skin-card';
-            card.innerHTML = `
+            const el = document.createElement('div');
+            el.className = 'shop-card';
+            el.innerHTML = `
                 <div class="img">
-                    <img src="${skin.image}" alt="${skin.name}" onerror="this.style.display='none'; this.parentElement.textContent='${skin.name}';">
+                    <img src="${skin.image}" onerror="this.style.display='none'; this.parentElement.textContent='${skin.name}';">
                 </div>
                 <div class="name">${skin.name}</div>
                 <div class="price">${skin.price} G</div>
                 <div class="quality quality-${skin.quality}">${QUALITY_NAMES[skin.quality]}</div>
             `;
-            card.addEventListener('click', () => buySkin(skin));
-            grid.appendChild(card);
+            el.addEventListener('click', () => buySkin(skin));
+            grid.appendChild(el);
         });
     }
 
-    function renderInventory() {
-        const grid = document.getElementById('invGrid');
-        grid.innerHTML = '';
-
-        if (state.inventory.length === 0) {
-            grid.innerHTML = '<div class="empty">Инвентарь пуст. Крути рулетку!</div>';
-            return;
-        }
-
-        state.inventory.forEach((skin, index) => {
-            const card = document.createElement('div');
-            card.className = 'skin-card' + (selectedSkins.has(index) ? ' selected' : '');
-            card.innerHTML = `
-                <div class="img">
-                    <img src="${skin.image}" alt="${skin.name}" onerror="this.style.display='none'; this.parentElement.textContent='${skin.name}';">
-                </div>
-                <div class="name">${skin.name}</div>
-                <div class="price">${skin.price} G</div>
-                <div class="quality quality-${skin.quality}">${QUALITY_NAMES[skin.quality]}</div>
-            `;
-            card.addEventListener('click', () => toggleSelect(index));
-            grid.appendChild(card);
-        });
-
-        updateSelectionInfo();
-    }
-
-    function updateSelectionInfo() {
-        const count = selectedSkins.size;
+    function updateUpgradeInfo() {
         let sum = 0;
         selectedSkins.forEach(i => {
             if (state.inventory[i]) sum += state.inventory[i].price;
         });
 
-        document.getElementById('selectedCount').textContent = count;
-        document.getElementById('selectedSum').textContent = sum;
+        document.getElementById('investedSum').textContent = sum;
+        document.getElementById('targetPrice').textContent = targetSkin ? targetSkin.price : '—';
 
-        document.getElementById('upgradeBtn').disabled = count === 0;
-        document.getElementById('sellBtn').disabled = count === 0;
-    }
+        const chanceEl = document.getElementById('chanceDisplay');
+        const btn = document.getElementById('upgradeBtn');
 
-    function toggleSelect(index) {
-        if (selectedSkins.has(index)) {
-            selectedSkins.delete(index);
+        if (sum > 0 && targetSkin) {
+            let chance = (sum / targetSkin.price) * 100;
+            if (chance > 90) chance = 90;
+            if (chance < 1) chance = 1;
+            chanceEl.textContent = chance.toFixed(1) + '%';
+            btn.disabled = false;
         } else {
-            selectedSkins.add(index);
+            chanceEl.textContent = '—';
+            btn.disabled = true;
         }
-        renderInventory();
     }
 
-    // ============================================
-    // ДЕЙСТВИЯ
-    // ============================================
     function buySkin(skin) {
         if (state.balance < skin.price) {
             alert('Недостаточно голды!');
@@ -502,205 +580,162 @@
         renderInventory();
     }
 
-    function sellSelected() {
-        let sum = 0;
-        const indices = Array.from(selectedSkins).sort((a,b) => b - a);
-        indices.forEach(i => {
-            if (state.inventory[i]) {
-                sum += state.inventory[i].price;
-                state.inventory.splice(i, 1);
-            }
-        });
-        state.balance += sum;
-        selectedSkins.clear();
-        saveState();
-        updateBalance();
-        renderInventory();
-        alert(`Продано на ${sum} G`);
-    }
+    // ============================================
+    // РУЛЕТКА (SVG)
+    // ============================================
+    function drawRoulette(chancePercent) {
+        const svg = document.getElementById('rouletteSvg');
+        svg.innerHTML = `<circle cx="100" cy="100" r="95" fill="#202126" stroke="#363940" stroke-width="2"/>`;
 
-    function getRandomSkinByQuality(quality) {
-        const filtered = SKINS.filter(s => s.quality === quality);
-        if (filtered.length === 0) return null;
-        return filtered[Math.floor(Math.random() * filtered.length)];
-    }
+        const winAngle = (chancePercent / 100) * 360;
+        const loseAngle = 360 - winAngle;
 
-    function pickQuality(chances) {
-        const total = chances.base + chances.pro + chances.legend + chances.myth;
-        const r = Math.random() * total;
-        if (r < chances.base) return 'base';
-        if (r < chances.base + chances.pro) return 'pro';
-        if (r < chances.base + chances.pro + chances.legend) return 'legend';
-        return 'myth';
-    }
-
-    function rollRoulette() {
-        if (SKINS.length === 0) {
-            alert('Скины не загружены');
-            return;
+        // Сектор удачи (зелёный/золотой)
+        if (winAngle > 0) {
+            const path = describeArc(100, 100, 90, 0, winAngle);
+            const el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            el.setAttribute('d', path);
+            el.setAttribute('fill', 'rgba(255, 215, 0, 0.6)');
+            el.setAttribute('stroke', '#FFD700');
+            el.setAttribute('stroke-width', '1');
+            svg.appendChild(el);
         }
 
-        // Игрок вкладывает 100 голды за крутку
-        const BET = 100;
-        if (state.balance < BET) {
-            alert('Недостаточно голды (нужно 100 G)');
-            return;
-        }
-        state.balance -= BET;
-
-        const chances = getChances(BET);
-        const quality = pickQuality(chances);
-        const skin = getRandomSkinByQuality(quality);
-
-        if (!skin) {
-            alert('Не нашлось скина такого качества');
-            state.balance += BET;
-            return;
+        // Сектор проигрыша (красный)
+        if (loseAngle > 0) {
+            const path = describeArc(100, 100, 90, winAngle, 360);
+            const el = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            el.setAttribute('d', path);
+            el.setAttribute('fill', 'rgba(255, 68, 68, 0.4)');
+            el.setAttribute('stroke', '#FF4444');
+            el.setAttribute('stroke-width', '1');
+            svg.appendChild(el);
         }
 
-        showRoulette(skin);
+        // Центр
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '100');
+        circle.setAttribute('cy', '100');
+        circle.setAttribute('r', '40');
+        circle.setAttribute('fill', '#3A3F45');
+        circle.setAttribute('stroke', '#363940');
+        svg.appendChild(circle);
+
+        // Текст с процентом
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('x', '100');
+        text.setAttribute('y', '105');
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('font-size', '18');
+        text.setAttribute('font-weight', '700');
+        text.setAttribute('fill', '#FFD700');
+        text.textContent = chancePercent.toFixed(0) + '%';
+        svg.appendChild(text);
     }
 
-    function showRoulette(resultSkin) {
-        // Создаём полосу из случайных скинов + победный
-        const track = document.createElement('div');
-        track.className = 'roulette-track';
-
-        const ITEMS = 50;
-        const WIN_INDEX = 45;
-
-        for (let i = 0; i < ITEMS; i++) {
-            const item = document.createElement('div');
-            item.className = 'roulette-item';
-            let skin;
-            if (i === WIN_INDEX) {
-                skin = resultSkin;
-            } else {
-                skin = SKINS[Math.floor(Math.random() * SKINS.length)];
-            }
-            item.innerHTML = `
-                <img src="${skin.image}" onerror="this.style.display='none';">
-                <div style="position:absolute;bottom:5px;font-size:10px;">${skin.price} G</div>
-            `;
-            item.style.position = 'relative';
-            track.appendChild(item);
-        }
-
-        // Открываем модалку
-        const modal = document.getElementById('modal');
-        const content = modal.querySelector('.modal-content');
-        content.innerHTML = `
-            <h2>Крутим...</h2>
-            <div class="roulette-wrapper">
-                <div class="roulette-pointer"></div>
-                <div id="trackHolder"></div>
-            </div>
-        `;
-        content.querySelector('#trackHolder').replaceWith(track);
-        modal.classList.add('show');
-
-        // Анимация
-        const itemWidth = 120;
-        const centerOffset = window.innerWidth > 600 ? 400 : 150;
-        const finalX = -(WIN_INDEX * itemWidth) + centerOffset - itemWidth / 2;
-
-        setTimeout(() => {
-            track.style.transform = `translateX(${finalX}px)`;
-        }, 100);
-
-        // Результат
-        setTimeout(() => {
-            showResult(resultSkin);
-        }, 5200);
+    function describeArc(cx, cy, r, startAngle, endAngle) {
+        const start = polarToCartesian(cx, cy, r, endAngle);
+        const end = polarToCartesian(cx, cy, r, startAngle);
+        const largeArc = endAngle - startAngle <= 180 ? 0 : 1;
+        return `M ${cx} ${cy} L ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} 0 ${end.x} ${end.y} Z`;
     }
 
-    function showResult(skin) {
-        const modal = document.getElementById('modal');
-        const content = modal.querySelector('.modal-content');
-
-        content.innerHTML = `
-            <h2>Выпал скин!</h2>
-            <div class="result-skin">
-                <img src="${skin.image}" onerror="this.style.display='none';">
-                <div style="margin-top:10px; font-weight:700;">${skin.name}</div>
-                <div class="quality quality-${skin.quality}">${QUALITY_NAMES[skin.quality]}</div>
-                <div style="color:#FFD700; margin-top:6px;">${skin.price} G</div>
-            </div>
-            <div class="modal-buttons">
-                <button class="btn" id="keepBtn">Оставить</button>
-                <button class="btn btn-danger" id="sellResultBtn">Продать за ${skin.price}</button>
-            </div>
-        `;
-
-        document.getElementById('keepBtn').addEventListener('click', () => {
-            state.inventory.push({ ...skin });
-            saveState();
-            updateBalance();
-            renderInventory();
-            modal.classList.remove('show');
-        });
-
-        document.getElementById('sellResultBtn').addEventListener('click', () => {
-            state.balance += skin.price;
-            saveState();
-            updateBalance();
-            renderInventory();
-            modal.classList.remove('show');
-        });
+    function polarToCartesian(cx, cy, r, angle) {
+        const rad = (angle - 90) * Math.PI / 180;
+        return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
     }
 
-    function upgradeSelected() {
-        if (selectedSkins.size === 0) return;
+    // ============================================
+    // АПГРЕЙД
+    // ============================================
+    function startUpgrade() {
+        if (selectedSkins.size === 0 || !targetSkin) return;
 
         let sum = 0;
-        const indices = Array.from(selectedSkins).sort((a,b) => b - a);
+        const indices = Array.from(selectedSkins);
         indices.forEach(i => {
             if (state.inventory[i]) sum += state.inventory[i].price;
         });
 
-        const chances = getChances(sum);
-        const quality = pickQuality(chances);
-        const skin = getRandomSkinByQuality(quality);
+        let chance = (sum / targetSkin.price) * 100;
+        if (chance > 90) chance = 90;
+        if (chance < 1) chance = 1;
 
-        if (!skin) {
-            alert('Не нашлось скина такого качества');
-            return;
-        }
+        // Рисуем рулетку с шансом
+        drawRoulette(chance);
 
-        // Удаляем вложенные скины (теряются сразу)
-        indices.forEach(i => {
-            if (state.inventory[i]) state.inventory.splice(i, 1);
-        });
-        selectedSkins.clear();
+        // Крутим SVG
+        const svg = document.getElementById('rouletteSvg');
+        svg.style.transform = 'rotate(0deg)';
 
-        // Если выпало дороже суммы — повезло
-        if (skin.price >= sum) {
-            state.inventory.push({ ...skin });
-            saveState();
-            updateBalance();
-            renderInventory();
-            showUpgradeResult(skin, true);
+        // Случайная остановка
+        const win = Math.random() * 100 < chance;
+
+        // Куда остановится стрелка (в секторе победы или проигрыша)
+        let stopAngle;
+        if (win) {
+            stopAngle = Math.random() * chance;
         } else {
-            // Не повезло — всё потеряно
-            // Если совсем пусто — даём 100 голды
-            if (state.inventory.length === 0 && state.balance === 0) {
-                state.balance = START_BALANCE;
-                saveState();
-                updateBalance();
-                renderInventory();
-                showLoseMessage();
-            } else {
-                saveState();
-                updateBalance();
-                renderInventory();
-                showUpgradeResult(skin, false);
-            }
+            stopAngle = chance + Math.random() * (360 - chance);
         }
+
+        // Несколько полных оборотов + угол остановки
+        const totalRotation = 5 * 360 + (360 - stopAngle);
+
+        // Сбрасываем анимацию
+        svg.style.transition = 'none';
+        svg.style.transform = 'rotate(0deg)';
+
+        setTimeout(() => {
+            svg.style.transition = `transform ${UPGRADE_DURATION}ms cubic-bezier(0.15, 0.9, 0.15, 1)`;
+            svg.style.transform = `rotate(${totalRotation}deg)`;
+        }, 50);
+
+        // После анимации — результат
+        setTimeout(() => {
+            // Удаляем вложенные скины
+            const sortedIndices = indices.sort((a, b) => b - a);
+            sortedIndices.forEach(i => {
+                if (state.inventory[i]) state.inventory.splice(i, 1);
+            });
+            selectedSkins.clear();
+
+            if (win) {
+                state.inventory.push({ ...targetSkin });
+                saveState();
+                updateBalance();
+                renderInventory();
+                renderTargets();
+                updateUpgradeInfo();
+                showResultModal(true, targetSkin);
+            } else {
+                // Проверяем, всё ли проиграно
+                if (state.inventory.length === 0 && state.balance === 0) {
+                    state.balance = START_BALANCE;
+                    saveState();
+                    updateBalance();
+                    renderInventory();
+                    renderTargets();
+                    updateUpgradeInfo();
+                    showLoseAllModal();
+                } else {
+                    saveState();
+                    updateBalance();
+                    renderInventory();
+                    renderTargets();
+                    updateUpgradeInfo();
+                    showResultModal(false, targetSkin);
+                }
+            }
+        }, UPGRADE_DURATION + 200);
     }
 
-    function showUpgradeResult(skin, win) {
+    // ============================================
+    // МОДАЛКИ
+    // ============================================
+    function showResultModal(win, skin) {
         const modal = document.getElementById('modal');
-        const content = modal.querySelector('.modal-content');
+        const content = document.getElementById('modalContent');
         content.innerHTML = `
             <h2>${win ? '🎉 Повезло!' : '😢 Не повезло'}</h2>
             <div class="result-skin">
@@ -719,9 +754,9 @@
         modal.classList.add('show');
     }
 
-    function showLoseMessage() {
+    function showLoseAllModal() {
         const modal = document.getElementById('modal');
-        const content = modal.querySelector('.modal-content');
+        const content = document.getElementById('modalContent');
         content.innerHTML = `
             <h2>😢 Ты всё проебал</h2>
             <p style="margin:16px 0; opacity:0.7;">Держи 100 голды на новый старт</p>
@@ -745,9 +780,7 @@
         });
     });
 
-    document.getElementById('rollBtn').addEventListener('click', rollRoulette);
-    document.getElementById('sellBtn').addEventListener('click', sellSelected);
-    document.getElementById('upgradeBtn').addEventListener('click', upgradeSelected);
+    document.getElementById('upgradeBtn').addEventListener('click', startUpgrade);
 
     // ============================================
     // СТАРТ
@@ -756,8 +789,11 @@
         loadState();
         await loadSkins();
         updateBalance();
-        renderShop();
         renderInventory();
+        renderTargets();
+        renderShop();
+        updateUpgradeInfo();
+        drawRoulette(50); // нейтральная рулетка при старте
     }
 
     init();
