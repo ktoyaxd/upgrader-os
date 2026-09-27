@@ -62,5 +62,29 @@
     "image": "skins/ak47chan.png",
     "price": 100,
     "quality": "pro"
+  },
+  {
+    "id": "ak47478",
+    "name": "478",
+    "weapon": "AK-47",
+    "image": "skins/ak47478.png",
+    "price": 100,
+    "quality": "legend"
+  },
+  {
+    "id": "deagleAgent",
+    "name": "Agent",
+    "weapon": "Deagle",
+    "image": "skins/deagleAgent.png",
+    "price": 100,
+    "quality": "pro"
+  },
+  {
+    "id": "mp5chan",
+    "name": "Chan",
+    "weapon": "MP5",
+    "image": "skins/mp5chan.png",
+    "price": 100,
+    "quality": "pro"
   }
 ]
