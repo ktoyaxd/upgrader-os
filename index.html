@@ -60,7 +60,7 @@
         /* ===== КАРТОЧКА СКИНА ===== */
         .skin-card {
             position: relative;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.3s ease;
@@ -88,7 +88,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 12px;
             position: relative;
             min-height: 0;
         }
@@ -98,20 +98,18 @@
             max-height: 90%;
             object-fit: contain;
             image-rendering: pixelated;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
         .skin-card .bottom-part {
-            background: #2a2f3a;
             padding: 10px 14px;
-            min-height: 55px;
+            min-height: 52px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .skin-card .name {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: #fff;
             text-align: left;
@@ -123,7 +121,7 @@
 
         .skin-card .weapon {
             font-size: 11px;
-            color: #8a95a5;
+            color: rgba(255, 255, 255, 0.7);
             text-align: left;
             margin-top: 2px;
             overflow: hidden;
@@ -132,38 +130,46 @@
             font-weight: 400;
         }
 
-        /* ===== ГРАДИЕНТЫ И РАМКИ ПО КАЧЕСТВУ ===== */
+        /* ===== КАЧЕСТВА ===== */
 
         .quality-base .top-part {
-            background: linear-gradient(180deg, 
-                #5AB0FF 0%, #4A90E2 25%, #3A6A9F 50%, #354560 75%, #3A3F45 100%);
+            background: linear-gradient(180deg, #5A7FE8 0%, #4A5FD9 100%);
+        }
+        .quality-base .bottom-part {
+            background: #3A4A9F;
         }
         .quality-base {
-            border: 2px solid #5AB0FF;
+            border: 2px solid #5A7FE8;
         }
 
         .quality-pro .top-part {
-            background: linear-gradient(180deg, 
-                #FF6B6B 0%, #D32F2F 25%, #8A3030 50%, #552525 75%, #3A3F45 100%);
+            background: linear-gradient(180deg, #E85A7F 0%, #D94A6F 100%);
+        }
+        .quality-pro .bottom-part {
+            background: #B03A5F;
         }
         .quality-pro {
-            border: 2px solid #FF4444;
+            border: 2px solid #E85A7F;
         }
 
         .quality-legend .top-part {
-            background: linear-gradient(180deg, 
-                #D896FF 0%, #A855F7 25%, #7A3FB0 50%, #4A2A60 75%, #3A3F45 100%);
+            background: linear-gradient(180deg, #D95AE8 0%, #C94AD9 100%);
+        }
+        .quality-legend .bottom-part {
+            background: #A03AB0;
         }
         .quality-legend {
-            border: 2px solid #C060FF;
+            border: 2px solid #D95AE8;
         }
 
         .quality-myth .top-part {
-            background: linear-gradient(180deg, 
-                #F5D91A 0%, #D4B91A 20%, #A89520 45%, #6B6535 70%, #3A3F45 100%);
+            background: linear-gradient(180deg, #F5D91A 0%, #E8C81A 100%);
+        }
+        .quality-myth .bottom-part {
+            background: #C4B01F;
         }
         .quality-myth {
-            border: 2px solid #FFD700;
+            border: 2px solid #F5D91A;
         }
 
         /* ===== АПГРЕЙД ===== */
