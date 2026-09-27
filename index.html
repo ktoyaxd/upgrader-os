@@ -57,59 +57,67 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== КАРТОЧКА СКИНА С РАМКОЙ ===== */
+        /* ===== КАРТОЧКА СКИНА ===== */
         .skin-card {
             position: relative;
-            border-radius: 10px;
-            padding: 3px;
+            border-radius: 12px;
+            overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.3s ease;
+            aspect-ratio: 1 / 1.15;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
         .skin-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
         }
         .skin-card.selected {
-            box-shadow: 0 0 16px rgba(255, 215, 0, 0.8);
+            box-shadow: 0 0 24px rgba(255, 215, 0, 0.9);
         }
         .skin-card.target-selected {
-            box-shadow: 0 0 16px rgba(106, 138, 255, 0.8);
+            box-shadow: 0 0 24px rgba(106, 138, 255, 0.9);
         }
-        .skin-card .content {
-            background: #2a2f3a;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .skin-card .image-block {
-            width: 100%;
-            height: 100px;
+
+        .skin-card .top-part {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0,0,0,0.2);
-            padding: 8px;
+            padding: 10px;
+            position: relative;
+            min-height: 0;
         }
-        .skin-card .image-block img {
-            max-width: 100%;
-            max-height: 100%;
+        .skin-card .top-part img {
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain;
             image-rendering: pixelated;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
         }
-        .skin-card .info {
-            padding: 8px 10px;
-            background: rgba(0,0,0,0.4);
+
+        .skin-card .bottom-part {
+            background: #2a2f3a;
+            padding: 8px 12px;
+            min-height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .skin-card .name {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             color: #fff;
             text-align: left;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            line-height: 1.2;
         }
         .skin-card .weapon {
             font-size: 11px;
-            color: #aaa;
+            color: #8a95a5;
             text-align: left;
             margin-top: 2px;
             overflow: hidden;
@@ -117,18 +125,18 @@
             white-space: nowrap;
         }
 
-        /* ===== РАМКИ ПО КАЧЕСТВУ ===== */
-        .quality-base {
-            background: linear-gradient(135deg, #4A90E2 0%, #5AB0FF 50%, #7BC5FF 100%);
+        /* ===== ГРАДИЕНТЫ ПО КАЧЕСТВУ (плавно в серый) ===== */
+        .quality-base .top-part {
+            background: linear-gradient(180deg, #5AB0FF 0%, #4A90E2 40%, #3A5068 75%, #3A3F45 100%);
         }
-        .quality-pro {
-            background: linear-gradient(135deg, #D32F2F 0%, #FF4444 50%, #FF6B6B 100%);
+        .quality-pro .top-part {
+            background: linear-gradient(180deg, #FF4444 0%, #D32F2F 40%, #6B3535 75%, #3A3F45 100%);
         }
-        .quality-legend {
-            background: linear-gradient(135deg, #8B5CF6 0%, #C060FF 50%, #E0A0FF 100%);
+        .quality-legend .top-part {
+            background: linear-gradient(180deg, #C060FF 0%, #A855F7 40%, #5A3F75 75%, #3A3F45 100%);
         }
-        .quality-myth {
-            background: linear-gradient(135deg, #B8860B 0%, #FFD700 50%, #FFE97F 100%);
+        .quality-myth .top-part {
+            background: linear-gradient(180deg, #E8C81A 0%, #C4B01F 40%, #6B6535 75%, #3A3F45 100%);
         }
 
         /* ===== АПГРЕЙД ===== */
@@ -153,7 +161,7 @@
         }
 
         .skins-list {
-            max-height: 500px;
+            max-height: 520px;
             overflow-y: auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -290,7 +298,6 @@
             .roulette-circle { width: 220px; height: 220px; }
             .skins-list { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
             .shop-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
-            .skin-card .image-block { height: 80px; }
         }
     </style>
 </head>
@@ -374,9 +381,6 @@
     let selectedSkin = null;
     let targetSkin = null;
 
-    // ============================================
-    // СОЗДАНИЕ КАРТОЧКИ
-    // ============================================
     function createSkinCard(skin, options = {}) {
         const card = document.createElement('div');
         card.className = `skin-card quality-${skin.quality}`;
@@ -385,31 +389,26 @@
         if (options.targetSelected) card.classList.add('target-selected');
 
         card.innerHTML = `
-            <div class="content">
-                <div class="image-block">
-                    <img src="${skin.image}" alt="${skin.name}" onerror="this.style.display='none'; this.parentElement.textContent='${skin.name}';">
-                </div>
-                <div class="info">
-                    <div class="name">${skin.name}</div>
-                    <div class="weapon">${skin.weapon || ''}</div>
-                </div>
+            <div class="top-part">
+                <img src="${skin.image}" alt="${skin.name}" onerror="this.style.display='none';">
+            </div>
+            <div class="bottom-part">
+                <div class="name">${skin.name}</div>
+                <div class="weapon">${skin.weapon || ''}</div>
             </div>
         `;
 
         return card;
     }
 
-    // ============================================
-    // ЗАГРУЗКА
-    // ============================================
     function loadState() {
-        const saved = localStorage.getItem('osnw_upgrader_v4');
+        const saved = localStorage.getItem('osnw_upgrader_v6');
         if (saved) {
             try { state = JSON.parse(saved); } catch (e) { resetState(); }
         }
     }
     function saveState() {
-        localStorage.setItem('osnw_upgrader_v4', JSON.stringify(state));
+        localStorage.setItem('osnw_upgrader_v6', JSON.stringify(state));
     }
     function resetState() {
         state = { balance: START_BALANCE, inventory: [] };
@@ -426,9 +425,6 @@
         document.getElementById('balanceDisplay').textContent = state.balance;
     }
 
-    // ============================================
-    // РЕНДЕР
-    // ============================================
     function renderInventory() {
         const list = document.getElementById('invList');
         list.innerHTML = '';
@@ -551,9 +547,6 @@
         updateStats();
     }
 
-    // ============================================
-    // РУЛЕТКА
-    // ============================================
     function drawRoulette(chancePercent) {
         const svg = document.getElementById('rouletteSvg');
         svg.style.transition = 'none';
@@ -635,9 +628,6 @@
         return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
     }
 
-    // ============================================
-    // АПГРЕЙД
-    // ============================================
     function startUpgrade() {
         if (!selectedSkin || !targetSkin) return;
 
@@ -713,9 +703,6 @@
         }, UPGRADE_DURATION + 200);
     }
 
-    // ============================================
-    // МОДАЛКИ
-    // ============================================
     function showResultModal(win, skin) {
         const modal = document.getElementById('modal');
         const content = document.getElementById('modalContent');
@@ -751,9 +738,6 @@
         modal.classList.add('show');
     }
 
-    // ============================================
-    // ТАБЫ
-    // ============================================
     document.querySelectorAll('.tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -766,9 +750,6 @@
     document.getElementById('upgradeBtn').addEventListener('click', startUpgrade);
     document.getElementById('clearBtn').addEventListener('click', clearSelection);
 
-    // ===========================================
-    // СТАРТ
-    // ============================================
     async function init() {
         loadState();
         await loadSkins();
