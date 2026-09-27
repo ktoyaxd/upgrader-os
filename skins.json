@@ -18,7 +18,7 @@
   {
     "id": "DaggersDualityBlue",
     "name": "Blue Steel",
-    "weapon": "M4A1",
+    "weapon": "Daggers",
     "image": "skins/DaggersDualityBlue.png",
     "price": 23400,
     "quality": "myth"
@@ -41,7 +41,7 @@
   },
   {
     "id": "deagleBloodyPink",
-    "name": "BlodyPink",
+    "name": "Bloody Pink",
     "weapon": "Deagle",
     "image": "skins/deagleBloodyPink.png",
     "price": 100,
