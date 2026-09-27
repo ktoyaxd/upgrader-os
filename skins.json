@@ -24,11 +24,43 @@
     "quality": "myth"
   },
   {
-    "id": "glock_basic",
-    "name": "Simple",
-    "weapon": "Glock-18",
-    "image": "skins/glock_basic.png",
-    "price": 300,
-    "quality": "base"
+    "id": "P90chan",
+    "name": "Chan",
+    "weapon": "P90",
+    "image": "skins/P90chan.png",
+    "price": 100,
+    "quality": "pro"
+  },
+  {
+    "id": "prodigyTechnohoid",
+    "name": "Technohoid",
+    "weapon": "Prodigy",
+    "image": "skins/prodigyTechnphoid.png",
+    "price": 100,
+    "quality": "legend"
+  },
+  {
+    "id": "deagleBloodyPink",
+    "name": "BlodyPink",
+    "weapon": "Deagle",
+    "image": "skins/deagleBloodyPink.png",
+    "price": 100,
+    "quality": "pro"
+  },
+  {
+    "id": "awpchan",
+    "name": "Chan",
+    "weapon": "AWP",
+    "image": "skins/awpchan.png",
+    "price": 100,
+    "quality": "pro"
+  },
+  {
+    "id": "ak47chan",
+    "name": "Chan",
+    "weapon": "AK-47",
+    "image": "skins/ak47chan.png",
+    "price": 100,
+    "quality": "pro"
   }
 ]
