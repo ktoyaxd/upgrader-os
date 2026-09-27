@@ -57,14 +57,14 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== КАРТОЧКА СКИНА ===== */
+        /* ===== КАРТОЧКА СКИНА (горизонтальная) ===== */
         .skin-card {
             position: relative;
             border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.3s ease;
-            aspect-ratio: 1 / 1.15;
+            aspect-ratio: 1.4 / 1;
             display: flex;
             flex-direction: column;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
@@ -88,7 +88,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 10px;
             position: relative;
             min-height: 0;
         }
@@ -98,18 +98,19 @@
             max-height: 90%;
             object-fit: contain;
             image-rendering: pixelated;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
         }
 
         .skin-card .bottom-part {
-            padding: 10px 14px;
-            min-height: 52px;
+            padding: 8px 12px;
+            min-height: 42px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .skin-card .name {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #fff;
             text-align: left;
@@ -120,7 +121,7 @@
         }
 
         .skin-card .weapon {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(255, 255, 255, 0.7);
             text-align: left;
             margin-top: 2px;
@@ -133,40 +134,40 @@
         /* ===== КАЧЕСТВА ===== */
 
         .quality-base .top-part {
-            background: linear-gradient(180deg, #5A7FE8 0%, #4A5FD9 100%);
+            background: linear-gradient(135deg, #5A7FE8 0%, #4A5FD9 50%, #3A4A9F 100%);
         }
         .quality-base .bottom-part {
-            background: #3A4A9F;
+            background: #2A3570;
         }
         .quality-base {
             border: 2px solid #5A7FE8;
         }
 
         .quality-pro .top-part {
-            background: linear-gradient(180deg, #E85A7F 0%, #D94A6F 100%);
+            background: linear-gradient(135deg, #E85A7F 0%, #D94A6F 50%, #B03A5F 100%);
         }
         .quality-pro .bottom-part {
-            background: #B03A5F;
+            background: #7A2540;
         }
         .quality-pro {
             border: 2px solid #E85A7F;
         }
 
         .quality-legend .top-part {
-            background: linear-gradient(180deg, #D95AE8 0%, #C94AD9 100%);
+            background: linear-gradient(135deg, #D95AE8 0%, #C94AD9 50%, #A03AB0 100%);
         }
         .quality-legend .bottom-part {
-            background: #A03AB0;
+            background: #6A2578;
         }
         .quality-legend {
             border: 2px solid #D95AE8;
         }
 
         .quality-myth .top-part {
-            background: linear-gradient(180deg, #F5D91A 0%, #E8C81A 100%);
+            background: linear-gradient(135deg, #F5D91A 0%, #E8C81A 50%, #C4B01F 100%);
         }
         .quality-myth .bottom-part {
-            background: #C4B01F;
+            background: #8A7A15;
         }
         .quality-myth {
             border: 2px solid #F5D91A;
@@ -197,7 +198,7 @@
             max-height: 520px;
             overflow-y: auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 10px;
             padding: 4px;
         }
@@ -279,7 +280,7 @@
         /* ===== МАГАЗИН ===== */
         .shop-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 14px;
         }
 
@@ -329,8 +330,8 @@
         @media (max-width: 600px) {
             h1 { font-size: 18px; }
             .roulette-circle { width: 220px; height: 220px; }
-            .skins-list { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
-            .shop-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+            .skins-list { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+            .shop-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
         }
     </style>
 </head>
