@@ -60,7 +60,7 @@
     "name": "Chan",
     "weapon": "AK-47",
     "image": "skins/ak47chan.png",
-    "price": 100,
+    "price": 79,
     "quality": "pro"
   },
   {
@@ -68,7 +68,7 @@
     "name": "478",
     "weapon": "AK-47",
     "image": "skins/ak47478.png",
-    "price": 100,
+    "price": 2,
     "quality": "legend"
   },
   {
