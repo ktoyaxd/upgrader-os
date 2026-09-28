@@ -118,5 +118,29 @@
     "image": "skins/ak47BlueFire.png",
     "price": 2,
     "quality": "pro"
+  },
+  {
+    "id": "fdSnowball",
+    "name": "Snowball",
+    "weapon": "FD-338",
+    "image": "skins/fdSnowball.png",
+    "price": 2,
+    "quality": "legend"
+  },
+  {
+    "id": "glockGalacticFX",
+    "name": "Galaxtic FX",
+    "weapon": "Glock",
+    "image": "skins/glockGalacticFX.png",
+    "price": 9000,
+    "quality": "myth"
+  },
+  {
+    "id": "butterflyAristocrat",
+    "name": "Aristocrat",
+    "weapon": "Butterfly",
+    "image": "skins/butterflyAristocrat.png",
+    "price": 3000,
+    "quality": "base"
   }
 ]
