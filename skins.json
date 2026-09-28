@@ -76,7 +76,7 @@
     "name": "Agent",
     "weapon": "Deagle",
     "image": "skins/deagleAgent.png",
-    "price": 100,
+    "price": 360,
     "quality": "pro"
   },
   {
@@ -92,7 +92,7 @@
     "name": "Spectrum",
     "weapon": "Bayonet",
     "image": "skins/bayonetSpectrum.png",
-    "price": 100,
+    "price": 1080,
     "quality": "pro"
   },
   {
@@ -100,7 +100,7 @@
     "name": "Winter Awakening",
     "weapon": "Deagle",
     "image": "skins/deagleWinterAwakening.png",
-    "price": 100,
+    "price": 36,
     "quality": "base"
   },
   {
@@ -116,7 +116,7 @@
     "name": "Blue Fire",
     "weapon": "AK-47",
     "image": "skins/ak47BlueFire.png",
-    "price": 100,
+    "price": 2,
     "quality": "pro"
   }
 ]
