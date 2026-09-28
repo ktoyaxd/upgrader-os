@@ -94,5 +94,13 @@
     "image": "skins/bayonetSpectrum.png",
     "price": 100,
     "quality": "pro"
+  },
+  {
+    "id": "deagleWinterAwakening",
+    "name": "Winter Awakening",
+    "weapon": "Deagle",
+    "image": "skins/deagleWinterAwakening.png",
+    "price": 100,
+    "quality": "base"
   }
 ]
