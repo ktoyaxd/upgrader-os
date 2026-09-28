@@ -102,5 +102,21 @@
     "image": "skins/deagleWinterAwakening.png",
     "price": 100,
     "quality": "base"
+  },
+  {
+    "id": "m4a1chan",
+    "name": "Chan",
+    "weapon": "M4A1",
+    "image": "skins/m4a1chan.png",
+    "price": 100,
+    "quality": "pro"
+  },
+  {
+    "id": "ak47BlueFire",
+    "name": "Blue Fire",
+    "weapon": "AK-47",
+    "image": "skins/ak47BlueFire.png",
+    "price": 100,
+    "quality": "pro"
   }
 ]
